@@ -31,7 +31,7 @@ func main() {
 	settings := imager.Settings{
 		MirrorY: true,
 		MirrorX: false,
-		Fade:    0.5,
+		Fade:    10,
 		Seed:    12345,
 	}
 
@@ -61,6 +61,13 @@ To create a template image:
   - Magenta (255,0,255): Border/Empty
   - Cyan (0,255,255): Empty/Body
   - Anything else: Empty
+### Example Results
+![2024-05-01-021708_3000x2000_scrot](https://github.com/NotSoSeriouss/imager/assets/77798806/ef162374-2210-4381-8aed-b58d6489c81a)
+![2024-05-01-021703_3000x2000_scrot](https://github.com/NotSoSeriouss/imager/assets/77798806/9d85c119-225f-42a4-9e24-0f2f9e334ff8)
+![2024-05-01-021700_3000x2000_scrot](https://github.com/NotSoSeriouss/imager/assets/77798806/fc566ed8-9141-4d2c-bd9e-5915c97ec86e)
+![2024-05-01-021659_3000x2000_scrot](https://github.com/NotSoSeriouss/imager/assets/77798806/e1a4f0ff-78d0-47ea-8157-31659914f1e0)
+![2024-05-01-021656_3000x2000_scrot](https://github.com/NotSoSeriouss/imager/assets/77798806/06c4e966-8f53-41a5-85c9-a7e3e56e7083)
+
 
 ## Contributing
 
