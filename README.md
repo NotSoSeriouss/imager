@@ -49,7 +49,7 @@ func main() {
 ## Template Image
 
 ![template](https://imgur.com/EVb2SZp.png)
-`Here the image is in half because this template is meant to be merrored`
+(Here the image is in half because this template is meant to be mirrored)
 
 To create a template image:
 
