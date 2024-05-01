@@ -7,6 +7,7 @@ Imager is a Go library for generating image matrices based on a given template i
 - Generate procedurally pixel matrices from template images.
 - Customize mirroring along the X and Y axes.
 - Seed for deterministic randomness.
+- Adjustable dark gradient
 
 ## Installation
 
@@ -31,8 +32,9 @@ func main() {
 	settings := imager.Settings{
 		MirrorY: true,
 		MirrorX: false,
-		Fade:    10,
-		Seed:    12345,
+		Fade:    50, // At 50, the lowest pixel in the y
+                             // axys will have removed 50 pt from its brightness
+		Seed:    12345, // Use 1 instead to have a random seed
 	}
 
 	// Define color
