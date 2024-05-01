@@ -14,7 +14,7 @@ type Settings struct {
 	MirrorY bool
 	MirrorX bool
 
-	Fade float32
+	Fade uint8
 
 	Seed int64
 }
@@ -85,14 +85,6 @@ func getColor(col rgbaColor, rng *rand.Rand) rgbaColor {
 
 // Generate a matrix of rgba colors with the imager algorithm.
 // It takes an image path as input for the template.
-// To make a template simply create an image (either png or jpg) and
-// use this table as a reference for the colors to use:
-// (255,0,0) Red: Border
-// (0,255,0) Green: Body
-// (255,255,0): Border/Body
-// (255,0,255): Border/Empty
-// (0,255,255): Empty/Body
-// Anything else: Empty
 func Generate(path string, col rgbaColor, set Settings) [][]rgbaColor {
 	if set.Seed == 1 {
 		set.Seed = rand.Int63()
@@ -179,7 +171,13 @@ func Generate(path string, col rgbaColor, set Settings) [][]rgbaColor {
 		finalMat[x] = make([]rgbaColor, h)
 		for y := 0; y < h; y++ {
 			if matCopy[x][y] == body {
-				finalMat[x][y] = getColor(col, rng)
+				color := getColor(col, rng)
+				if set.Fade != 0 {
+					color.R = uint8(max(0, float32(color.R) - ((float32(y) / float32(h)) * float32(set.Fade))))
+					color.G = uint8(max(0, float32(color.G) - ((float32(y) / float32(h)) * float32(set.Fade))))
+					color.B = uint8(max(0, float32(color.B) - ((float32(y) / float32(h)) * float32(set.Fade))))
+				}
+					finalMat[x][y] = color
 			}
 			if matCopy[x][y] == border {
 				color := getColor(col, rng)
@@ -218,4 +216,8 @@ func Generate(path string, col rgbaColor, set Settings) [][]rgbaColor {
 
 func Rcolor(alpha float32) rgbaColor {
 	return rgbaColor{uint8(rand.Intn(255)), uint8(rand.Intn(255)), uint8(rand.Intn(255)), alpha}
+}
+
+func Ncolor(r, g, b uint8, alpha float32) rgbaColor {
+	return rgbaColor{R: r, G: g, B: b, A: alpha}
 }
