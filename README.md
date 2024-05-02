@@ -7,7 +7,11 @@ Imager is a Go library for generating image matrices based on a given template i
 - Generate procedurally pixel matrices from template images.
 - Customize mirroring along the X and Y axes.
 - Seed for deterministic randomness.
-- Adjustable dark gradient
+- Adjustable dark gradient (Fading)
+
+### Coming soon
+- Fading on any any angle (Right now it only works on the X axys)
+- Use matrices instead of an image as the input
 
 ## Installation
 
